@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 15, 15;
+  --background-end-rgb: 30, 30, 30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 10, 10, 10;
+    --background-end-rgb: 20, 20, 20;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 220 10% 5%; /* Deep black with a slight blue tint */
+    --foreground: 0 0% 100%; /* Crisp white text */
+    --card: 220 10% 10%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 100%;
+    --popover: 220 10% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 204 100% 50%; /* Glossy blue, similar to ceramic protection */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 8% 20%; /* Dark gray, for contrast */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 8% 25%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 220 100% 65%; /* Bright blue for highlighting */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 8% 40%; /* Soft gray border */
+    --input: 220 8% 30%;
+    --ring: 204 100% 50%;
+    --chart-1: 200 100% 45%; /* Metallic blue */
+    --chart-2: 40 100% 55%; /* Gold */
+    --chart-3: 0 0% 90%; /* Silver */
+    --chart-4: 210 15% 20%; /* Dark gray */
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Lazy loading image transitions */
+img {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+img[data-src] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+img.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Optional: Optimize for Lenis scrolling */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
