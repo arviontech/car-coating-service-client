@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Container from "./shared/Container";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,48 +37,50 @@ const Navbar = () => {
           : "bg-white/10"
       )}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <ShieldCheck className="h-8 w-8 text-primary" />
-            <span className="font-bold text-xl">CeramicShield Pro</span>
-          </Link>
+      <Container>
+        <div className=" py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center space-x-2">
+              <ShieldCheck className="h-8 w-8 text-primary" />
+              <span className="font-bold text-xl">CeramicShield Pro</span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <nav className=" md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-foreground/80 hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <nav className=" md:flex items-center space-x-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-foreground/80 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+            </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Button asChild variant="outline">
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-            <Suspense fallback={<div>Loading booking details...</div>}>
-              <Button asChild>
-                <Link href="/booking">Book Now</Link>
+            <div className="hidden md:flex items-center space-x-4">
+              <Button asChild variant="outline">
+                <Link href="/contact">Contact Us</Link>
               </Button>
-            </Suspense>
-          </div>
+              <Suspense fallback={<div>Loading booking details...</div>}>
+                <Button asChild>
+                  <Link href="/booking">Book Now</Link>
+                </Button>
+              </Suspense>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-      </div>
+      </Container>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
