@@ -15,6 +15,7 @@ import HeroSection from "@/components/home/hero-section";
 import HowItWorks from "@/components/home/how-it-works";
 import TestimonialSection from "@/components/home/testimonial-section";
 import ChooseUs from "@/components/home/ChooseUs/ChooseUs";
+import Compare from "@/components/home/Compare/Compare";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <HeroSection />
       <ChooseUs />
       <HowItWorks />
+      <Compare />
 
       {/* Services Section */}
       <section className="py-20">

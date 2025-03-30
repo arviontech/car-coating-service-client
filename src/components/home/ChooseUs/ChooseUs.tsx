@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Clock, Award, Sparkles, Phone, MapPin } from "lucide-react";
 import Container from "@/components/shared/Container";
 import Image from "next/image";
-import choose from "@/assets/choose/2 (1).png";
+import choose from "@/assets/choose/wash.jpg";
 
 const ChooseUs = () => {
   const features = [
@@ -71,7 +71,7 @@ const ChooseUs = () => {
           </div>
         </div>
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-10">
             <div className="">
               <h1 className="text-2xl md:text-3xl font-bold  mb-4">
                 Washing and Cleaning of Your Car
@@ -97,13 +97,13 @@ const ChooseUs = () => {
                 alt="Professional car wash service"
                 width={1000}
                 height={600}
-                className="w-full h-full"
+                className="w-full h-full rounded-md"
               />
             </div>
           </div>
         </div>
         <div className="flex flex-col justify-center items-center sm:flex-row gap-4 pt-8">
-          <div className="flex items-center border bg-[#1A202C] border-gray-400 shadow-sm shadow-blue-900 text-white  px-4 py-3 w-[200px] rounded h-[55px]">
+          <div className="flex items-center border bg-[#1A202C] border-gray-400 shadow-sm shadow-blue-900 text-white  px-4 py-3 w-[200px] rounded h-[55px] cursor-pointer">
             <Phone className="h-5 w-5  mr-2" />
             <div>
               <p className="text-xs ">Call for appointment</p>
