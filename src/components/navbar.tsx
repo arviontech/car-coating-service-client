@@ -28,6 +28,9 @@ const Navbar = () => {
   const router = useRouter();
   const { data: userData } = useGetmeQuery("");
 
+  console.log(user?.role);
+  console.log("userData:", userData);
+
   const handleLogout = () => {
     dispatch(logout());
     // router.push("/login");

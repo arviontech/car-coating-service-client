@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useGetmeQuery } from "@/redux/api/userApi";
@@ -24,6 +24,8 @@ import {
   ShoppingBag,
   User,
   ShieldCheck,
+  File,
+  Shield,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/redux/hook";
@@ -46,6 +48,9 @@ const DashboardSidebar = () => {
   const { user } = useAppSelector((state: any) => state.auth);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const pathname = usePathname();
+
+  console.log(user?.role);
+  console.log(userData?.data?.name);
 
   // Admin sidebar items
   const adminSidebarItems: SidebarItem[] = [
@@ -100,28 +105,28 @@ const DashboardSidebar = () => {
     },
     {
       title: "My Bookings",
-      href: "/dashboard/customer/bookings",
+      href: "/dashboard/customer/appointments",
       icon: Calendar,
     },
+    // {
+    //   title: "Favorites",
+    //   href: "/dashboard/customer/favorites",
+    //   icon: Heart,
+    // },
     {
-      title: "Favorites",
-      href: "/dashboard/customer/favorites",
-      icon: Heart,
+      title: "Documents",
+      href: "/dashboard/customer/documents",
+      icon: File,
     },
+    // {
+    //   title: "Messages",
+    //   href: "/dashboard/customer/messages",
+    //   icon: MessageSquare,
+    // },
     {
-      title: "Orders",
-      href: "/dashboard/customer/orders",
-      icon: ShoppingBag,
-    },
-    {
-      title: "Messages",
-      href: "/dashboard/customer/messages",
-      icon: MessageSquare,
-    },
-    {
-      title: "Payment Methods",
-      href: "/dashboard/customer/payment",
-      icon: CreditCard,
+      title: "Warranties",
+      href: "/dashboard/customer/warranties",
+      icon: Shield,
     },
     {
       title: "Profile",
@@ -160,7 +165,7 @@ const DashboardSidebar = () => {
           </div>
           <div>
             <p className="font-medium">
-              {userData?.data?.name || "Super Admin"}
+              {userData?.data?.name || "Guest User"}
             </p>
             <p className="text-xs text-slate-400">
               UserId: {userData?.data?.userName || "SA001"}
@@ -245,10 +250,12 @@ const DashboardSidebar = () => {
 
       {/* Logout button */}
       <div className="p-4 border-t border-slate-800">
-        <button className="flex items-center w-full px-3 py-2 rounded-lg hover:bg-slate-800/60 text-slate-400 transition-colors">
-          <LogOut className="h-5 w-5 mr-3" />
-          <span>Logout</span>
-        </button>
+        <Link
+          href="/"
+          className="border border-gray-300  flex items-center justify-center w-full px-3 py-2 rounded-lg hover:bg-slate-800/60 text-slate-400 transition-colors"
+        >
+          <span className="text-center">Back To Home</span>
+        </Link>
       </div>
     </aside>
   );
