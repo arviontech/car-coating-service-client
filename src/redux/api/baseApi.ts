@@ -39,20 +39,23 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   }
 
   if (result?.error?.status === 401) {
-    //The code sends a POST request to /auth/refresh-token to obtain a new access token, using credentials: "include" to include the refresh token stored in cookies.
-    const res = await fetch("http://localhost:5000/api/v1", {
-      method: "POST",
-      credentials: "include",
-    });
-    const data = await res.json(); //Parsing the server's JSON response into a usable JavaScript object.
+    const res = await fetch(
+      "http://localhost:5000/api/v1/auth/generate-access-token-via-refresh-token",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
+    const data = await res.json(); //.json() converts raw HTTP response (text) into a usable JavaScript object so you can work with it easily.
 
     if (data?.data?.accessToken) {
       const user = ((api.getState() as RootState).auth as any).user;
       api.dispatch(setUser({ user, token: data?.data?.accessToken }));
       result = await baseQuery(args, api, extraOptions);
+    } else {
+      // Only logout if refresh token fails
+      api.dispatch(logout());
     }
-  } else {
-    api.dispatch(logout());
   }
 
   return result;
@@ -61,5 +64,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
+  tagTypes: ["User"],
   endpoints: () => ({}),
 });
