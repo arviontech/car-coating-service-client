@@ -51,11 +51,18 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  const rolePath =
+    user?.role === "SUPER_ADMIN" || user?.role === "ADMIN"
+      ? "admin"
+      : user?.role === "CUSTOMER"
+      ? "customer"
+      : "";
+
   const authLinks = user?.email
     ? [
         {
           name: "Dashboard",
-          href: `/dashboard/${user.role}`,
+          href: `/dashboard/${rolePath}`,
           icon: <User className="h-4 w-4" />,
         },
         {

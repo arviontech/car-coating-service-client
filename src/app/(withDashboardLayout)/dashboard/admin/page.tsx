@@ -1,9 +1,8 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
 import {
   LineChart,
   Line,
@@ -13,64 +12,62 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
-} from 'recharts'
+  ResponsiveContainer,
+} from "recharts";
 import {
   Calendar,
   DollarSign,
   Users,
   Package,
   TrendingUp,
-  Clock
-} from 'lucide-react'
+  Clock,
+} from "lucide-react";
 
 // Sample data for charts
 const revenueData = [
-  { month: 'Jan', revenue: 12000 },
-  { month: 'Feb', revenue: 15000 },
-  { month: 'Mar', revenue: 18000 },
-  { month: 'Apr', revenue: 16000 },
-  { month: 'May', revenue: 21000 },
-  { month: 'Jun', revenue: 19000 },
-]
+  { month: "Jan", revenue: 12000 },
+  { month: "Feb", revenue: 15000 },
+  { month: "Mar", revenue: 18000 },
+  { month: "Apr", revenue: 16000 },
+  { month: "May", revenue: 21000 },
+  { month: "Jun", revenue: 19000 },
+];
 
 const bookingsData = [
-  { day: 'Mon', bookings: 8 },
-  { day: 'Tue', bookings: 12 },
-  { day: 'Wed', bookings: 15 },
-  { day: 'Thu', bookings: 10 },
-  { day: 'Fri', bookings: 18 },
-  { day: 'Sat', bookings: 20 },
-  { day: 'Sun', bookings: 5 },
-]
+  { day: "Mon", bookings: 8 },
+  { day: "Tue", bookings: 12 },
+  { day: "Wed", bookings: 15 },
+  { day: "Thu", bookings: 10 },
+  { day: "Fri", bookings: 18 },
+  { day: "Sat", bookings: 20 },
+  { day: "Sun", bookings: 5 },
+];
 
 const upcomingAppointments = [
   {
     id: 1,
-    customer: 'John Doe',
-    service: 'Premium Ceramic Coating',
-    time: '10:00 AM',
-    date: '2024-03-25',
+    customer: "John Doe",
+    service: "Premium Ceramic Coating",
+    time: "10:00 AM",
+    date: "2024-03-25",
   },
   {
     id: 2,
-    customer: 'Jane Smith',
-    service: 'Basic Ceramic Coating',
-    time: '2:30 PM',
-    date: '2024-03-25',
+    customer: "Jane Smith",
+    service: "Basic Ceramic Coating",
+    time: "2:30 PM",
+    date: "2024-03-25",
   },
   {
     id: 3,
-    customer: 'Mike Johnson',
-    service: 'Paint Protection Film',
-    time: '11:00 AM',
-    date: '2024-03-26',
+    customer: "Mike Johnson",
+    service: "Paint Protection Film",
+    time: "11:00 AM",
+    date: "2024-03-26",
   },
-]
+];
 
 export default function AdminDashboard() {
-  const [timeRange, setTimeRange] = useState('week')
-
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -87,7 +84,9 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$45,231.89</div>
-            <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +20.1% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
@@ -97,27 +96,37 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+2,350</div>
-            <p className="text-xs text-muted-foreground">+180.1% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +180.1% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Bookings</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Total Bookings
+            </CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+12,234</div>
-            <p className="text-xs text-muted-foreground">+19% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +19% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Active Services</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Active Services
+            </CardTitle>
             <Package className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+573</div>
-            <p className="text-xs text-muted-foreground">+201 since last hour</p>
+            <p className="text-xs text-muted-foreground">
+              +201 since last hour
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -136,10 +145,10 @@ export default function AdminDashboard() {
                   <XAxis dataKey="month" />
                   <YAxis />
                   <Tooltip />
-                  <Line 
-                    type="monotone" 
-                    dataKey="revenue" 
-                    stroke="hsl(var(--primary))" 
+                  <Line
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="hsl(var(--primary))"
                     strokeWidth={2}
                   />
                 </LineChart>
@@ -160,9 +169,9 @@ export default function AdminDashboard() {
                   <XAxis dataKey="day" />
                   <YAxis />
                   <Tooltip />
-                  <Bar 
-                    dataKey="bookings" 
-                    fill="hsl(var(--primary))" 
+                  <Bar
+                    dataKey="bookings"
+                    fill="hsl(var(--primary))"
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>
@@ -186,9 +195,13 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <p className="text-sm font-medium">New booking received</p>
-                  <p className="text-xs text-muted-foreground">Premium Ceramic Coating</p>
+                  <p className="text-xs text-muted-foreground">
+                    Premium Ceramic Coating
+                  </p>
                 </div>
-                <div className="ml-auto text-xs text-muted-foreground">2m ago</div>
+                <div className="ml-auto text-xs text-muted-foreground">
+                  2m ago
+                </div>
               </div>
               <div className="flex items-center">
                 <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center mr-3">
@@ -198,7 +211,9 @@ export default function AdminDashboard() {
                   <p className="text-sm font-medium">New customer registered</p>
                   <p className="text-xs text-muted-foreground">John Doe</p>
                 </div>
-                <div className="ml-auto text-xs text-muted-foreground">5m ago</div>
+                <div className="ml-auto text-xs text-muted-foreground">
+                  5m ago
+                </div>
               </div>
               <div className="flex items-center">
                 <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center mr-3">
@@ -206,9 +221,13 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <p className="text-sm font-medium">Service completed</p>
-                  <p className="text-xs text-muted-foreground">Basic Ceramic Coating</p>
+                  <p className="text-xs text-muted-foreground">
+                    Basic Ceramic Coating
+                  </p>
                 </div>
-                <div className="ml-auto text-xs text-muted-foreground">15m ago</div>
+                <div className="ml-auto text-xs text-muted-foreground">
+                  15m ago
+                </div>
               </div>
             </div>
           </CardContent>
@@ -226,12 +245,18 @@ export default function AdminDashboard() {
                     <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">{appointment.customer}</p>
-                    <p className="text-xs text-muted-foreground">{appointment.service}</p>
+                    <p className="text-sm font-medium">
+                      {appointment.customer}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {appointment.service}
+                    </p>
                   </div>
                   <div className="ml-auto text-right">
                     <p className="text-sm font-medium">{appointment.time}</p>
-                    <p className="text-xs text-muted-foreground">{appointment.date}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {appointment.date}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -240,5 +265,5 @@ export default function AdminDashboard() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
